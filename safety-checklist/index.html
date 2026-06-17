@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Workplace Safety Inspection Checklist</title>
+<meta name="description" content="A mobile-friendly workplace safety inspection checklist with save-and-resume and CSV export."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<!-- Relative paths only (./style.css, ./app.js) so it works under /projects/safety-checklist/ -->
+<link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <div class="brand-text"><strong>Site Safety Inspection</strong><span>Field checklist</span></div>
+      </div>
+      <div class="progress" title="Completion">
+        <div class="progress-bar"><span id="bar"></span></div>
+        <span id="pct" class="pct">0%</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="meta card">
+      <div class="field">
+        <label for="site">Site / Location</label>
+        <input id="site" type="text" placeholder="e.g. Dock 4, North Yard" autocomplete="off"/>
+      </div>
+      <div class="field">
+        <label for="inspector">Inspector</label>
+        <input id="inspector" type="text" placeholder="Name" autocomplete="off"/>
+      </div>
+      <div class="field">
+        <label for="date">Date</label>
+        <input id="date" type="date"/>
+      </div>
+    </section>
+
+    <div id="groups"></div>
+
+    <section class="summary card" aria-live="polite">
+      <div class="summary-counts">
+        <span class="tag tag-pass">Pass <b id="cPass">0</b></span>
+        <span class="tag tag-fail">Fail <b id="cFail">0</b></span>
+        <span class="tag tag-na">N/A <b id="cNa">0</b></span>
+        <span class="tag tag-open">Unanswered <b id="cOpen">0</b></span>
+      </div>
+      <div class="actions">
+        <button id="export" type="button" class="btn">Export CSV</button>
+        <button id="print" type="button" class="btn btn-ghost">Print</button>
+        <button id="reset" type="button" class="btn btn-ghost btn-danger">Reset</button>
+      </div>
+    </section>
+
+    <p class="saved" id="saved">Saved automatically to this device.</p>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

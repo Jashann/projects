@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Insurance Verification Extractor</title>
+<meta name="description" content="Turn messy dental insurance verification notes into clean, structured data."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<!-- Relative paths only (./style.css, ./app.js) so it works under /projects/insurance-extractor/ -->
+<link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <div class="brand-text"><strong>Verification Extractor</strong><span>Messy notes to structured data</span></div>
+      </div>
+      <span class="badge">Demo</span>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Raw verification notes</h2>
+        <div class="samples">
+          <button class="chip" data-sample="0" type="button">Sample A</button>
+          <button class="chip" data-sample="1" type="button">Sample B</button>
+          <button class="chip" data-sample="clear" type="button">Clear</button>
+        </div>
+      </div>
+      <textarea id="raw" spellcheck="false" placeholder="Paste messy insurance verification notes here..."></textarea>
+      <button id="extract" class="btn" type="button">
+        Extract structured data
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="hint">Runs entirely in your browser. No data leaves this page.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Structured output</h2>
+        <div class="samples">
+          <button id="copy" class="chip" type="button">Copy JSON</button>
+          <button id="csv" class="chip" type="button">CSV</button>
+        </div>
+      </div>
+      <div id="result" class="result">
+        <p class="empty">Extracted fields will appear here. Load a sample and hit Extract.</p>
+      </div>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Agent Workflow Builder</title>
+<meta name="description" content="Compose an AI agent automation from steps, run it, and watch a live execution trace."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<!-- Relative paths only (./style.css, ./app.js) so it works under /projects/agent-workflow-builder/ -->
+<link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 21 8.5v7L12 21 3 15.5v-7L12 3Z"/><path d="M12 12 21 8.5M12 12v9M12 12 3 8.5"/></svg>
+        </span>
+        <div class="brand-text"><strong>Agent Workflow Builder</strong><span>Compose · run · trace</span></div>
+      </div>
+      <span class="badge">Interactive demo</span>
+    </div>
+  </header>
+
+  <main class="wrap app">
+    <!-- Palette -->
+    <section class="col palette">
+      <div class="col-head"><h2>Step library</h2></div>
+      <p class="sub">Click a step to add it to the workflow.</p>
+      <div id="palette"></div>
+      <div class="palette-actions">
+        <button id="sample" class="btn btn-ghost" type="button">Load sample</button>
+        <button id="clear" class="btn btn-ghost" type="button">Clear</button>
+      </div>
+    </section>
+
+    <!-- Builder -->
+    <section class="col builder">
+      <div class="col-head">
+        <h2>Workflow</h2>
+        <button id="run" class="btn" type="button">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Run workflow
+        </button>
+      </div>
+      <ol id="steps" class="steps"></ol>
+      <p id="emptyHint" class="empty">Add steps from the library, or load the sample workflow.</p>
+    </section>
+
+    <!-- Run trace -->
+    <section class="col trace">
+      <div class="col-head">
+        <h2>Execution trace</h2>
+        <span id="status" class="run-status">idle</span>
+      </div>
+      <div id="log" class="log"><p class="empty">Run the workflow to see a step-by-step trace with timing and output.</p></div>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>

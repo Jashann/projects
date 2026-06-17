@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>STL Paint — 3D Model Painter</title>
+<meta name="description" content="Import an STL model, paint directly on its surface, region-fill parts, and export a color-capable PLY for multi-material 3D printing."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<!-- Relative paths only for my own assets (./style.css, ./app.js). Three.js loads from CDN. -->
+<link rel="stylesheet" href="./style.css"/>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 21 7v10l-9 5-9-5V7l9-5Z"/><path d="m12 7 4.5 2.5M12 7 7.5 9.5M12 7v5"/></svg>
+        </span>
+        <div class="brand-text"><strong>STL Paint</strong><span>3D model painter</span></div>
+      </div>
+      <span class="badge">WebGL · Three.js</span>
+    </div>
+  </header>
+
+  <div class="stage">
+    <aside class="tools">
+      <div class="tool">
+        <span class="tlabel">Mode</span>
+        <div class="seg">
+          <button id="mBrush" class="segbtn active" type="button">Brush</button>
+          <button id="mRegion" class="segbtn" type="button">Region fill</button>
+        </div>
+      </div>
+      <div class="tool">
+        <span class="tlabel">Color</span>
+        <div class="swatches" id="swatches"></div>
+        <input id="color" type="color" value="#e23b3b"/>
+      </div>
+      <div class="tool" id="brushTool">
+        <span class="tlabel">Brush size</span>
+        <input id="brush" type="range" min="2" max="30" value="10"/>
+      </div>
+      <div class="tool">
+        <span class="tlabel">Model</span>
+        <label class="filebtn">Import .stl<input id="file" type="file" accept=".stl" hidden/></label>
+        <button id="reset" class="ghost" type="button">Reset colors</button>
+      </div>
+      <div class="tool">
+        <span class="tlabel">Export</span>
+        <button id="exportPly" class="primary" type="button">Export .ply (with color)</button>
+      </div>
+      <p class="tip" id="tip">Drag to orbit. Hold and drag on the model to paint. STL carries shape but not color — this adds it.</p>
+    </aside>
+
+    <div id="canvas" class="canvas"></div>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
